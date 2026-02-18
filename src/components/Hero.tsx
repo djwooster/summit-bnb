@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
 const headline = ["Your rental property,", "managed flawlessly."];
@@ -38,7 +37,7 @@ function ArrowButton({
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative overflow-hidden inline-flex items-center bg-[#D4AF6A] text-[#14181F] font-semibold px-8 py-4 text-base rounded-full"
+      className="relative overflow-hidden inline-flex items-center bg-[#D4AF6A] text-[#14181F] font-semibold px-8 py-2 text-base rounded-full"
     >
       {/* Arrow entering from the left on hover */}
       <motion.span
@@ -104,7 +103,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <h1 className="font-serif text-5xl md:text-7xl xl:text-8xl font-bold leading-[1.05] text-[#F0EDE8] mb-8">
+          <h1 className="font-serif text-4xl md:text-5xl xl:text-6xl font-bold leading-[1.1] text-[#F0EDE8] mb-8">
             {headline.map((line, lineIdx) => (
               <div key={lineIdx} className="overflow-hidden pb-2">
                 <div className="flex flex-wrap gap-x-[0.3em]">
@@ -153,14 +152,12 @@ export default function Hero() {
           >
             <ArrowButton href="#contact">Get a Free Assessment</ArrowButton>
 
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-[#F0EDE8]/30 text-[#F0EDE8] hover:bg-[#F0EDE8]/10 hover:border-[#F0EDE8]/50 px-8 py-4 text-base rounded-full backdrop-blur-sm bg-transparent"
+            <a
+              href="#how-it-works"
+              className="inline-flex items-center border border-[#F0EDE8]/30 text-[#F0EDE8] hover:bg-[#F0EDE8]/10 hover:border-[#F0EDE8]/50 px-8 py-2 text-base font-semibold rounded-full backdrop-blur-sm transition-colors duration-200"
             >
-              <a href="#how-it-works">How It Works</a>
-            </Button>
+              How It Works
+            </a>
           </motion.div>
         </div>
       </div>
