@@ -5,7 +5,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
-const headline = ["Your rental property,", "managed flawlessly."];
+const headline = [
+  "Turn Your Property Into a",
+  "High-Performing Airbnb.",
+  "Without Lifting a Finger",
+];
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -138,9 +142,8 @@ export default function Hero() {
             transition={{ delay: 0.9, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="text-[#F0EDE8]/70 text-lg md:text-xl leading-relaxed max-w-xl mb-10"
           >
-            Summit BnB handles every detail of your short-term rental — from
-            listing optimization to guest communications to spotless turnovers.
-            You earn. We work.
+            We help homeowners maximize bookings, protect their property, and
+            increase revenue with hands-on, boutique Airbnb management.
           </motion.p>
 
           {/* CTAs */}

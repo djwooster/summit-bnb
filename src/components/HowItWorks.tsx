@@ -2,29 +2,32 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ClipboardList, Sparkles, TrendingUp } from "lucide-react";
 
 const steps = [
   {
     number: "01",
-    icon: ClipboardList,
-    title: "Free Property Assessment",
-    description:
-      "We evaluate your property's earning potential — location, seasonality, comparable listings — and provide a personalized revenue projection. No commitment, no pressure.",
+    title: "Setup & Optimization",
+    bullets: [
+      "Professional photos",
+      "Listing creation & SEO optimization",
+    ],
   },
   {
     number: "02",
-    icon: Sparkles,
-    title: "We Handle Everything",
-    description:
-      "From professional photography and listing creation to dynamic pricing, guest communications, and coordinated cleanings after every stay. Every single detail, covered.",
+    title: "Full-Service Management",
+    bullets: [
+      "Guest communication (under 1 hour response time)",
+      "Cleaning, maintenance, restocking",
+    ],
   },
   {
     number: "03",
-    icon: TrendingUp,
-    title: "You Collect the Revenue",
-    description:
-      "Monthly deposits directly to your account, paired with transparent performance reports. Watch your property earn more than you thought possible — completely hands-off.",
+    title: "Revenue Optimization",
+    bullets: [
+      "Daily pricing adjustments",
+      "Monthly listing updates",
+      "Seasonal photo updates",
+    ],
   },
 ];
 
@@ -50,62 +53,45 @@ export default function HowItWorks() {
             </span>
           </div>
           <h2 className="font-serif text-4xl md:text-6xl font-bold text-[#F0EDE8] max-w-2xl leading-tight">
-            Sit back. <br />
-            <span className="text-[#D4AF6A]">We&apos;ll handle it.</span>
+            We handle <span className="text-[#D4AF6A]">everything.</span>
           </h2>
         </motion.div>
 
         {/* Steps */}
-        <div ref={ref} className="grid md:grid-cols-3 gap-0 md:divide-x md:divide-[#D4AF6A]/10">
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 40 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{
-                  delay: i * 0.18,
-                  duration: 0.9,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="md:px-12 first:pl-0 last:pr-0 pb-14 md:pb-0"
-              >
-                {/* Top rule + step number */}
-                <div className="mb-10">
-                  <motion.div
-                    initial={{ scaleX: 0 }}
-                    animate={inView ? { scaleX: 1 } : {}}
-                    transition={{
-                      delay: 0.1 + i * 0.18,
-                      duration: 0.7,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    style={{ transformOrigin: "left" }}
-                    className="w-10 h-px bg-[#D4AF6A]/60 mb-5"
-                  />
-                  <span className="font-serif text-[#D4AF6A]/60 text-3xl tracking-[0.15em]">
-                    {step.number}
-                  </span>
-                </div>
-
-                {/* Icon */}
-                <div className="p-2.5 rounded-xl bg-[#D4AF6A]/8 border border-[#D4AF6A]/15 w-fit mb-6">
-                  <Icon className="w-5 h-5 text-[#D4AF6A]" />
-                </div>
-
-                {/* Title */}
-                <h3 className="font-serif text-2xl md:text-[1.6rem] font-bold text-[#F0EDE8] mb-4 leading-snug">
+        <div ref={ref} className="grid md:grid-cols-3 gap-10 md:gap-0">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 40 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                delay: i * 0.18,
+                duration: 0.9,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="border-l border-[#D4AF6A]/25 pl-8 md:pr-12 flex flex-col justify-between min-h-64 gap-8"
+            >
+              {/* Top: title + bullets */}
+              <div className="flex flex-col gap-6">
+                <h3 className="font-serif text-2xl font-bold text-[#F0EDE8] leading-snug">
                   {step.title}
                 </h3>
+                <ul className="flex flex-col gap-2">
+                  {step.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start gap-2.5 text-[#F0EDE8]/55 text-[15px] leading-relaxed">
+                      <span className="mt-[0.4em] w-1 h-1 rounded-full bg-[#D4AF6A]/60 shrink-0" />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                {/* Description */}
-                <p className="text-[#F0EDE8]/55 leading-relaxed text-[15px]">
-                  {step.description}
-                </p>
-              </motion.div>
-            );
-          })}
+              {/* Bottom: large step number */}
+              <span className="font-serif text-6xl md:text-7xl font-bold text-[#D4AF6A]/20 leading-none tabular-nums">
+                {step.number}
+              </span>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
