@@ -18,7 +18,6 @@ import {
 
 type FormState = {
   firstName: string;
-  lastName: string;
   email: string;
   phone: string;
   propertyAddress: string;
@@ -27,7 +26,6 @@ type FormState = {
 
 const initialForm: FormState = {
   firstName: "",
-  lastName: "",
   email: "",
   phone: "",
   propertyAddress: "",
@@ -110,41 +108,19 @@ export default function Contact() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="firstName"
-                      className="text-[#F0EDE8]/70 text-sm"
-                    >
-                      First Name
-                    </Label>
-                    <Input
-                      id="firstName"
-                      name="firstName"
-                      value={form.firstName}
-                      onChange={handleChange}
-                      required
-                      placeholder="James"
-                      className={inputClass}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="lastName"
-                      className="text-[#F0EDE8]/70 text-sm"
-                    >
-                      Last Name
-                    </Label>
-                    <Input
-                      id="lastName"
-                      name="lastName"
-                      value={form.lastName}
-                      onChange={handleChange}
-                      required
-                      placeholder="Walker"
-                      className={inputClass}
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="firstName" className="text-[#F0EDE8]/70 text-sm">
+                    First Name
+                  </Label>
+                  <Input
+                    id="firstName"
+                    name="firstName"
+                    value={form.firstName}
+                    onChange={handleChange}
+                    required
+                    placeholder="James"
+                    className={inputClass}
+                  />
                 </div>
 
                 <div className="space-y-2">

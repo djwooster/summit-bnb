@@ -4,17 +4,17 @@ import { NextResponse } from "next/server";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-  const { name, email, phone, property, message } = await req.json();
+  const { firstName, email, phone, propertyAddress, message } = await req.json();
 
   const { error } = await resend.emails.send({
     from: "Summit BnB <hello@summitbnb.co>",
     to: "hello@summitbnb.co",
-    subject: `New inquiry from ${name}`,
+    subject: `New inquiry from ${firstName}`,
     text: [
-      `Name: ${name}`,
+      `Name: ${firstName}`,
       `Email: ${email}`,
       `Phone: ${phone || "—"}`,
-      `Property Address: ${property || "—"}`,
+      `Property Address: ${propertyAddress || "—"}`,
       `Message: ${message || "—"}`,
     ].join("\n"),
   });
