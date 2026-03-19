@@ -51,10 +51,17 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate submission
-    await new Promise((r) => setTimeout(r, 1200));
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
     setLoading(false);
-    setSubmitted(true);
+    if (res.ok) {
+      setSubmitted(true);
+    } else {
+      alert("Something went wrong. Please try again or email us directly.");
+    }
   };
 
   const inputClass =
@@ -283,9 +290,9 @@ export default function Contact() {
                 {[
                   {
                     el: "a" as const,
-                    href: "tel:+19705550182",
+                    href: "tel:+17208358894",
                     icon: Phone,
-                    label: "(970) 555-0182",
+                    label: "(720) 835-8894",
                     hover: true,
                   },
                   {
@@ -299,7 +306,7 @@ export default function Contact() {
                     el: "div" as const,
                     href: undefined,
                     icon: MapPin,
-                    label: "Steamboat Springs, Colorado",
+                    label: "Denver, Colorado",
                     hover: false,
                   },
                 ].map((item, i) => {
